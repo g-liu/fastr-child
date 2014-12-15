@@ -12,3 +12,64 @@
 
 /* =Theme customization starts here
 -------------------------------------------------------------- */
+
+code, kbd, tt, var {
+	font-size: 90%;
+	font-family: Monaco, Consolas, "Lucida Console", "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
+li > ul { list-style-type: circle; }
+li > ol { list-style-type: upper-alpha; }
+
+li li > ul { list-style-type: square; }
+li li > ol { list-style-type: lower-roman; }
+
+li li li > ul { list-style-type: disc; }
+li li li > ol { list-style-type: lower-alpha; }
+
+li li li li > ul { list-style-type: circle; }
+li li li li > ol { list-style-type: upper-roman; }
+
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; }
+
+h1 { font-size: 6rem; }
+h2 { font-size: 4rem; }
+h3 { font-size: 3rem; }
+h4 { font-size: 2.5rem; }
+h5 { font-size: 2rem; }
+h6 { font-size: 1.5rem; }
+
+h2.site-description {
+	line-height: 1.4em;
+}
+
+blockquote {
+	padding-left: 1.5em;
+	border-left: 5px solid #d2d2d2;
+}
+
+code, tt {
+	padding: 0.1em 0.25em;
+	border: 1px solid #e2e2e2;
+	background-color: #fafafa;
+	border-radius: 2px;
+}
+
+pre {
+	background-color: #f4f4f4;
+	font-family: "Lucida Console", Consolas, Courier, "Andale Mono", monospace;
+	padding: 1em;
+}
+
+var {
+	color: #009;
+}
+
+
+.container {
+	max-width: 960px;
+}
+
+.widget ul {
+	list-style: none;
+}
