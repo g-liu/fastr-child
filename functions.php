@@ -12,6 +12,11 @@ function additional_styles_and_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'additional_styles_and_scripts' );
 
+function custom_excerpt_length( $length ) {
+	return 60;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
 /**
  * Register widgetized area and update sidebar with default widgets.
  * This will replace "BottomBar" the parent theme
