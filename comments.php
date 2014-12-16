@@ -7,7 +7,7 @@
  * handled by a callback to fastr_comment() which is
  * located in the inc/template-tags.php file.
  *
- * @package fastr
+ * @package fastr-child
  */
 
 /*
@@ -30,20 +30,23 @@ if ( post_password_required() ) {
 					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
 			?>
 		</h2>
-		
-		<?php
-			// If comments are closed and there are comments, let's leave a little note, shall we?
-			if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
-		?>
-			<p class="no-comments"><?php _e( 'Comments are closed.', 'fastr' ); ?></p>
-		<?php endif; ?>
+	<?php endif; ?>
+
+	<?php
+		// If comments are closed, let's leave a little note, shall we?
+		if ( ! comments_open() && post_type_supports( get_post_type(), 'comments' ) ) :
+	?>
+		<p class="no-comments"><?php _e( 'Comments are closed.', 'fastr' ); ?></p>
+	<?php endif; ?>
+
+	<?php if ( have_comments() ) : ?>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-		<nav id="comment-nav-above" class="comment-navigation" role="navigation">
-			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'fastr' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'fastr' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'fastr' ) ); ?></div>
-		</nav><!-- #comment-nav-above -->
+			<nav id="comment-nav-above" class="comment-navigation" role="navigation">
+				<h3 class="screen-reader-text"><?php _e( 'Comment navigation', 'fastr' ); ?></h3>
+				<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'fastr' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'fastr' ) ); ?></div>
+			</nav><!-- #comment-nav-above -->
 		<?php endif; // check for comment navigation ?>
 
 		<ol class="comment-list">
@@ -59,11 +62,11 @@ if ( post_password_required() ) {
 		</ol><!-- .comment-list -->
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-		<nav id="comment-nav-below" class="comment-navigation" role="navigation">
-			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'fastr' ); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'fastr' ) ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'fastr' ) ); ?></div>
-		</nav><!-- #comment-nav-below -->
+			<nav id="comment-nav-below" class="comment-navigation" role="navigation">
+				<h3 class="screen-reader-text"><?php _e( 'Comment navigation', 'fastr' ); ?></h3>
+				<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'fastr' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'fastr' ) ); ?></div>
+			</nav><!-- #comment-nav-below -->
 		<?php endif; // check for comment navigation ?>
 
 	<?php endif; // have_comments() ?>
@@ -71,6 +74,7 @@ if ( post_password_required() ) {
 
 	<?php comment_form( array(
 			'comment_field' => '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
+			'<p class="form-allowed-tags">' . sprintf( __( 'Allowed <abbr title="HyperText Markup Language">HTML</abbr> tags: %s' ), ' <code>' . allowed_tags() . '</code>' ) . '</p>',
 		) );
 	?>
 

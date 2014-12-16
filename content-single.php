@@ -1,6 +1,6 @@
 <?php
 /**
- * @package fastr
+ * @package fastr-child
  */
 ?>
 

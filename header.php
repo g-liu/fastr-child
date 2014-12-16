@@ -4,7 +4,7 @@
  *
  * Displays all of the <head> section and everything up till <div id="content">
  *
- * @package fastr
+ * @package fastr-child
  */
 ?>
 <!DOCTYPE html>
@@ -94,10 +94,13 @@
 									_e( 'Links', 'fastr' );
 
 								elseif ( is_attachment() ) :
-									_e( sprintf( 'Attachment: %s', get_the_title() ), 'fastr' );
+									_e( sprintf( 'Attachment: %s', get_the_title() ), 'fastr-child' );
 								
 								elseif ( is_single() || is_page() ) :
 									the_title();
+
+								elseif ( is_search() ) :
+									_e( sprintf( 'Results for "%s"', get_search_query() ), 'fastr-child' );
 
 								elseif ( is_404() ) :
 									_e( 'Oops! That page can&rsquo;t be found.', 'fastr' );
@@ -109,7 +112,7 @@
 							?>
 						</h1><!-- #page-title -->
 
-						<?php if ( is_single() ) : ?>
+						<?php if ( is_single() || is_page() ) : ?>
 							<div class="meta-date">
 								<?php fastr_posted_on(); ?>
 							</div>
