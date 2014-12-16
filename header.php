@@ -23,7 +23,7 @@
 	<div id="page" class="hfeed site">
 		<?php
 			do_action( 'before' );
-			$url = $post ? wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ) : false;
+			$url = $post && ! is_home() ? wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ) : false;
 		?>
 		<header id="masthead" class="site-header"<?php echo $url ? ' style="background-image:url(\'' . $url . '\')"' : '' ?> role="banner">
 			
