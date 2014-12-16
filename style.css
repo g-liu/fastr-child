@@ -48,13 +48,17 @@ h5 { font-size: 2rem; }
 h6 { font-size: 1.5rem; }
 
 .site-title {
-	font-size: initial;
+	font-size: inherit;
 	line-height:initial;
 	margin-top: initial;
 	margin-bottom: initial;
 }
 h1.site-title { font-size: 6rem; }
-h2.site-description { line-height: 1.4em; }
+h1.page-title { font-size: 5rem; }
+h2.site-description {
+	line-height: 1.4em;
+	margin-bottom: 0;
+}
 
 blockquote {
 	padding-left: 1.5em;
@@ -86,21 +90,121 @@ input[type="text"], input[type="email"], input[type="url"], input[type="password
 	padding: 0.333em 0.5em;
 }
 
+.col { padding: 0 1.5em; }
+.row .row { margin: 0 -1.5em; }
+
+.row:before, .row:after {
+	content: "";
+	display: table;
+}
+.row:after {
+	clear: both;
+}
+
+@media only screen {
+	.col {
+		float: left;
+		width: 100%;
+
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		        box-sizing: border-box;
+	}
+}
+
 .site-header {
 	margin-bottom: 40px;
+	padding-bottom: 1em;
+	background-position: 50% 50%;
+	background-size: cover;
+}
+.site-header .container {
+	margin-top: 35px;
+}
+body.single .site-header .container,
+body.page .site-header .container {
+	margin-top: 250px;
+}
+
+.site-header h1 {
+	color: white;
 }
 
 #top-strip {
-	margin-left: 1em;
-	margin-right: 1em;
+	padding: .5em .5em 1em;
+	font-size: 90%;
+	zoom: 1;
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 80%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(80%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 80%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 80%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 80%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 80%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+
+}
+#top-strip:before,
+#top-strip:after {
+	content: " ";
+	display: table;
+}
+#top-strip:after {
+	clear: both;
+}
+
+#top-strip .site-title {
+	float: left;
+}
+#top-strip .main-navigation {
+	float: right;
+}
+#top-strip .main-navigation ul {
+	zoom: 1;
+}
+#top-strip .main-navigation ul:before,
+#top-strip .main-navigation ul:after {
+	content: " ";
+	display: table;
+}
+#top-strip .main-navigation ul:after {
+	clear: both;
+}
+#top-strip .main-navigation ul > li {
+	margin: 0;
+	margin-left: .5em;
+	margin-right: .5em;
+}
+#top-strip .main-navigation a {
+	color: #e2e2e2;
+}
+#top-strip .main-navigation ul ul {
+	bottom: initial;
+	top: 1.5em;
 }
 
 .container {
 	max-width: 960px;
 }
+.container.wide {
+	max-width: 1200px;
+}
+.container.narrow {
+	max-width: 700px;
+}
 
 .entry-header {
 	margin-top: initial;
+}
+
+.entry-meta,
+.entry-meta a,
+.entry-meta a:visited,
+.entry-meta a:focus,
+.entry-meta a:active {
+	color: #d6d6d6;
+}
+.entry-meta .fa {
+	width: 21px;
 }
 
 .sticky {
@@ -172,23 +276,28 @@ ol.comment-list {
 	position: relative;
 }
 
-.comment-body .reply,
-.comment-body .edit-link {
+.comment .reply,
+.comment .edit-link {
 	position: absolute;
 	right: 0;
 	font-size: 1.6rem;
 }
-.comment-body .reply  {
+.comment .reply  {
 	top: 0;
 }
-.comment-body .reply a {
+.comment .reply a {
 	color: #57A3E8;
 	text-decoration: none;
 }
-.comment-body .edit-link {
+.comment .edit-link {
 	top: 25px;
 }
 
+.pingback .edit-link {
+	float: right;
+}
+
+/* pagination */
 .page-links > a,
 .page-links > span {
 	border: 1px solid #d2d2d2;
@@ -205,10 +314,50 @@ ol.comment-list {
 	cursor: auto;
 }
 
+.site-footer {
+	text-align: initial;
+	color: #9aa7ac;
+	font-size: 1.42rem;
+	line-height: 1.66em;
+}
+.site-footer a {
+	color: #9ba7ac;
+}
+
 .widget ul {
 	list-style: none;
+}
+.widget > ul {
+	margin-left: 0;
 }
 .widget select {
 	padding: 0.25em;
 	border-radius: 2px;
+}
+
+.back-to-top {
+	width: 36px;
+	height: 36px;
+	top: -18px;
+	line-height: 3.6rem;
+}
+
+
+@media only screen and (min-width: 700px) and (max-width: 959px) {
+	.col-1-4 {
+		width: 50%;
+	}
+
+	.row .col-1-4:nth-child(2n+3) {
+		clear: left;
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	.col-1-3 {
+		width: 33.33333333333333333333%;
+	}
+	.col-1-4 {
+		width: 25%;
+	}
 }

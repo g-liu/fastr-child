@@ -22,7 +22,6 @@ if ( post_password_required() ) {
 
 <div id="comments" class="comments-area">
 
-	<?php // You can start editing here -- including this comment! ?>
 
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
@@ -31,6 +30,13 @@ if ( post_password_required() ) {
 					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
 			?>
 		</h2>
+		
+		<?php
+			// If comments are closed and there are comments, let's leave a little note, shall we?
+			if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+		?>
+			<p class="no-comments"><?php _e( 'Comments are closed.', 'fastr' ); ?></p>
+		<?php endif; ?>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-above" class="comment-navigation" role="navigation">
@@ -62,12 +68,6 @@ if ( post_password_required() ) {
 
 	<?php endif; // have_comments() ?>
 
-	<?php
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
-	?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'fastr' ); ?></p>
-	<?php endif; ?>
 
 	<?php comment_form( array(
 			'comment_field' => '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',

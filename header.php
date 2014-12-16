@@ -21,28 +21,34 @@
 
 <body <?php body_class(); ?>>
 	<div id="page" class="hfeed site">
-		<?php do_action( 'before' ); ?>
-		<header id="masthead" class="site-header" role="banner">
-			<?php if ( ! is_home() ) : ?>
-				<div id="top-strip">
+		<?php
+			do_action( 'before' );
+			$url = $post ? wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ) : false;
+		?>
+		<header id="masthead" class="site-header"<?php echo $url ? ' style="background-image:url(\'' . $url . '\')"' : '' ?> role="banner">
+			
+			<div id="top-strip">
+				<?php if ( ! is_home() ) : ?>
 					<div class="site-title">
 						<span>
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 						</span>
 					</div>
+				<?php endif; ?>
 
-					<nav></nav>
-				</div>
-			<?php endif; ?>
+				<nav id="site-navigation" class="main-navigation" role="navigation">
+					<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+				</nav><!-- #site-navigation -->
+			</div>
 
-			<div class="container">	
+			<div class="container narrow">	
 				<?php if( is_home() ) : ?>
 					<div class="site-branding text-center">
 						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 						<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 					</div>
 				<?php else: ?>
-					<div class="text-center">
+					<div class="entry-meta">
 						<h1 class="page-title">
 							<?php
 								if ( is_category() ) :
@@ -86,16 +92,49 @@
 
 								elseif ( is_tax( 'post_format', 'post-format-link' ) ) :
 									_e( 'Links', 'fastr' );
+
+								elseif ( is_attachment() ) :
+									_e( sprintf( 'Attachment: %s', get_the_title() ), 'fastr' );
 								
-								elseif ( is_single() ) :
-									_e( get_the_title(), 'fastr' );
+								elseif ( is_single() || is_page() ) :
+									the_title();
+
+								elseif ( is_404() ) :
+									_e( 'Oops! That page can&rsquo;t be found.', 'fastr' );
 
 								else :
 									_e( 'Archives', 'fastr' );
 
 								endif;
 							?>
-						</h1>
+						</h1><!-- #page-title -->
+
+						<?php if ( is_single() ) : ?>
+							<div class="meta-date">
+								<?php fastr_posted_on(); ?>
+							</div>
+							<?php
+								/* translators: used between list items, there is a space after the comma */
+								$categories_list = get_the_category_list( __( ', ', 'fastr' ) );
+								if ( $categories_list && fastr_categorized_blog() ) :
+							?>
+								<div class="cat-links">
+									<span class="fa fa-folder-o"></span>
+									<?php printf( '%1$s', $categories_list ); ?>
+								</div>
+							<?php endif; // End if categories ?>
+							<?php
+								/* translators: used between list items, there is a space after the comma */
+								$tags_list = get_the_tag_list( '', __( ', ', 'fastr' ) );
+								if ( $tags_list ) :
+							?>
+								<div class="tags-links">
+									<span class="fa fa-tags"></span>
+									<?php printf( '%1$s', $tags_list ); ?>
+								</div>
+							<?php endif; // End if $tags_list ?>
+						<?php endif; // End if single ?>
+						
 						<?php
 							// Show an optional term description.
 							$term_description = term_description();
@@ -103,7 +142,8 @@
 								printf( '<div class="taxonomy-description">%s</div>', $term_description );
 							endif;
 						?>
-					</div>
+
+					</div><!-- .entry-meta -->
 				<?php endif; ?>
 			</div>
 		</header><!-- #masthead -->

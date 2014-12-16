@@ -70,3 +70,24 @@ function fastr_comment( $comment, $args, $depth ) {
 }
 
 endif;
+
+if ( ! function_exists( 'fastr_posted_on' ) ) :
+/**
+ * Prints HTML with meta information for the current post-date/time and author.
+ */
+function fastr_posted_on() {
+	$time_string = '<span class="fa fa-clock-o"></span> <time class="entry-date published" datetime="%1$s">%2$s</time>';
+	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+		$time_string .= '<time class="updated" datetime="%3$s">%4$s</time>';
+	}
+
+	$time_string = sprintf( $time_string,
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date() ),
+		esc_attr( get_the_modified_date( 'c' ) ),
+		esc_html( get_the_modified_date() )
+	);
+
+	printf( __( '<span class="posted-on">%1$s</span>', 'fastr' ), $time_string);
+}
+endif;
