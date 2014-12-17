@@ -23,6 +23,15 @@
 
 	
 	<div class="entry-summary">
-        <?php the_excerpt(); ?>
+        <?php
+			if ( get_post_format() === 'image' ) : # show the first image instead
+				$first_img = catch_that_image();
+				if ( $first_img ) : ?>
+					<a href="<?php the_permalink(); ?>"><?php echo $first_img; ?></a>
+				<?php endif;
+			else :
+	        	the_excerpt();
+	        endif;
+        ?>
 	</div><!-- .entry-summary -->
 </article><!-- #post-## -->

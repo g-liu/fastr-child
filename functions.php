@@ -71,4 +71,27 @@ add_theme_support( 'custom-header', array(
 	'flex-width' => true,
 	'default-text-color' => '#fff',
 ) );
-add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
+
+add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'caption' ) );
+
+
+/**
+ * Retrieves the first image from a post
+ *
+ * @see http://www.wprecipes.com/how-to-get-the-first-image-from-the-post-and-display-it
+ *
+ * @return the HTML tag of the first image if post contains one or more images; false otherwise
+ */
+function catch_that_image() {
+	global $post, $posts;
+	$first_img = '';
+	ob_start();
+	ob_end_clean();
+	$output = preg_match_all( '/(<img.+src=[\'"][^\'"]+[\'"].*>)/i', $post->post_content, $matches );
+	$first_img = $matches[1][0];
+
+	if ( empty( $first_img ) ) {
+		$first_img = false;
+	}
+	return $first_img;
+}

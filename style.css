@@ -172,7 +172,8 @@ body.page .site-header .container {
 	margin-top: 250px;
 }
 
-.site-header h1 {
+.site-header h1,
+.site-header h2 {
 	color: white;
 	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
 }
@@ -274,6 +275,12 @@ body.page .site-header .container {
 .entry-content object {
 	display: block !important;
 	margin: 0 auto !important;
+}
+
+.format-image img,
+.format-image figure.wp-caption {
+	display: block;
+	margin: 0 auto;
 }
 
 .wp-caption .wp-caption-text {
@@ -464,6 +471,18 @@ p.form-submit {
 	height: 36px;
 	top: -18px;
 	line-height: 3.6rem;
+}
+
+/** Jetpack-specific */
+.tiled-gallery {
+	text-align: center;
+}
+.tiled-gallery .gallery-row {
+	margin: 0 auto;
+}
+.tiled-gallery-caption {
+	white-space: pre-wrap;
+	line-height: 1.4;
 }
 
 /** MEDIA QUERIES */
