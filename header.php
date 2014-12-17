@@ -23,7 +23,14 @@
 	<div id="page" class="hfeed site">
 		<?php
 			do_action( 'before' );
-			$url = $post && ! is_home() ? wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ) : false;
+			$url = get_header_image();
+			$post_header_url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
+			if( $url ) {
+				$url = $post_header_url ? $post_header_url : $url;
+			}
+			else {
+				$url = $post_header_url ? $post_header_url : false;
+			}
 		?>
 		<header id="masthead" class="site-header"<?php echo $url ? ' style="background-image:url(\'' . $url . '\')"' : '' ?> role="banner">
 			

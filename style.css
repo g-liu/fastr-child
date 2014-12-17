@@ -272,8 +272,8 @@ body.page .site-header .container {
 .entry-content iframe,
 .entry-content embed,
 .entry-content object {
-	display: block;
-	margin: 0 auto;
+	display: block !important;
+	margin: 0 auto !important;
 }
 
 .wp-caption .wp-caption-text {
@@ -328,13 +328,34 @@ ol.comment-list {
 	margin-top: 1.5em;
 	font-size: 18px;
 }
-.comment {
+li.comment {
 	padding-top: 0;
 	padding: 1em;
+	margin-bottom: 0;
 	background-color: #f4f4f4;
 }
-.comment.depth-2, .comment.depth-4, .comment.depth-6, .comment.depth-8, .comment.depth-10 {
+ol.comment-list > li.comment {
+	margin-bottom: 1em;
+}
+li.comment.depth-1 > #respond,
+li.comment.depth-3 > #respond,
+li.comment.depth-5 > #respond,
+li.comment.depth-5 > #respond,
+li.comment.depth-9 > #respond,
+li.comment.depth-2, li.comment.depth-4, li.comment.depth-6, li.comment.depth-8, li.comment.depth-10 {
 	background-color: #fff;
+}
+li.comment.depth-2 > #respond,
+li.comment.depth-4 > #respond,
+li.comment.depth-6 > #respond,
+li.comment.depth-8 > #respond,
+li.comment.depth-10 > #respond {
+	background-color: #f4f4f4;
+}
+
+li.comment #respond {
+	padding: 1em 1em 0.5em;
+	margin-bottom: 1.5em;
 }
 
 .comment-author {

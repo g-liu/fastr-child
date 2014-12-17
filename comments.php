@@ -41,14 +41,6 @@ if ( post_password_required() ) {
 
 	<?php if ( have_comments() ) : ?>
 
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-			<nav id="comment-nav-above" class="comment-navigation" role="navigation">
-				<h3 class="screen-reader-text"><?php _e( 'Comment navigation', 'fastr' ); ?></h3>
-				<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'fastr' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'fastr' ) ); ?></div>
-			</nav><!-- #comment-nav-above -->
-		<?php endif; // check for comment navigation ?>
-
 		<ol class="comment-list">
 			<?php
 				/* Loop through and list the comments. Tell wp_list_comments()
@@ -61,13 +53,7 @@ if ( post_password_required() ) {
 			?>
 		</ol><!-- .comment-list -->
 
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-			<nav id="comment-nav-below" class="comment-navigation" role="navigation">
-				<h3 class="screen-reader-text"><?php _e( 'Comment navigation', 'fastr' ); ?></h3>
-				<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'fastr' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'fastr' ) ); ?></div>
-			</nav><!-- #comment-nav-below -->
-		<?php endif; // check for comment navigation ?>
+		<?php fastr_comment_nav(); ?>
 
 	<?php endif; // have_comments() ?>
 

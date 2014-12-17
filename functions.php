@@ -64,3 +64,11 @@ if ( file_exists( get_stylesheet_directory() . '/inc/template-tags.php' ) )
 	require get_stylesheet_directory() . '/inc/template-tags.php';
 
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'custom-header', array(
+	'width' => 1400,
+	'height' => 500,
+	'flex-height' => true,
+	'flex-width' => true,
+	'default-text-color' => '#fff',
+) );
+add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );

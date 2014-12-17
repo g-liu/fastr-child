@@ -131,6 +131,26 @@ function fastr_comment( $comment, $args, $depth ) {
 
 endif;
 
+
+if ( ! function_exists( 'fastr_comment_nav' ) ) :
+/**
+ * Displays comment navigation for comments
+ */
+function fastr_comment_nav() {
+	if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+		<nav id="comment-nav-below" class="comment-navigation" role="navigation">
+			<h3 class="screen-reader-text"><?php _e( 'Comment navigation', 'fastr' ); ?></h3>
+			<div class="nav-links">
+				<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'fastr' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'fastr' ) ); ?></div>
+			</div>
+		</nav><!-- #comment-nav-below -->
+	<?php endif;
+}
+
+endif; 
+
+
 if ( ! function_exists( 'fastr_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
