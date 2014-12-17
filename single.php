@@ -14,7 +14,7 @@ get_header(); ?>
 
 			<?php get_template_part( 'content', 'single' ); ?>
 
-			<?php /*fastr_post_nav();*/ ?>
+			<?php fastr_post_nav(); ?>
 
 			<?php comments_template(); ?>
 

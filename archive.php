@@ -30,7 +30,7 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php fastr_paging_nav(); ?>
+			<?php paginate_links(); ?>
 
 		<?php else : ?>
 
