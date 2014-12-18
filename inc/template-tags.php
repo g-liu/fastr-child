@@ -183,3 +183,82 @@ function fastr_posted_on() {
 	printf( __( '<span class="posted-on">%1$s</span>', 'fastr' ), $time_string);
 }
 endif;
+
+if ( ! function_exists( 'get_first_attachment_metadata' ) ) :
+/**
+ * Retrieves the metadata for the first attachment to a post
+ * 
+ * @return an array of the same format as wp_get_attachment_metadata(), or false if no attachments
+ */
+function fastr_get_first_attachment_metadata() {
+	global $post;
+	$attachments = get_posts( array(
+		'post_type' => 'attachment',
+		'posts_per_page' => -1,
+		'post_parent' => $post->ID,
+		'exclude' => get_post_thumbnail_id(),
+	) );
+
+	if ( $attachments && array_key_exists( 0, $attachments ) ) {
+		return wp_get_attachment_metadata( $attachments[0]->ID );
+	}
+	return false;
+}
+endif;
+
+
+if ( ! function_exists( 'get_first_image' ) ) :
+/**
+ * Retrieves the first image from a post
+ *
+ * @see http://www.wprecipes.com/how-to-get-the-first-image-from-the-post-and-display-it
+ *
+ * @return HTML element of the image
+ */
+function fastr_get_first_image() {
+	global $post;
+	$first_img = '';
+	ob_start();
+	ob_end_clean();
+	$output = preg_match_all( '/(<img.+src=[\'"][^\'"]+[\'"].*>)/i', $post->post_content, $matches );
+	$first_img = $matches[1][0];
+
+	if ( empty( $first_img ) ) {
+		$first_img = false;
+	}
+	return $first_img;
+}
+endif;
+
+
+if ( ! function_exists( 'fastr_post_format_to_fa' ) ) :
+/**
+ * Converts a post format string to a font-awesome icon
+ * 
+ * @see http://fontawesome.io/icons
+ * 
+ * @param {string} $format - the post format
+ *
+ * @return an HTML string containing the font-awesome icon, or empty string
+ * 	if no associated genericon
+ */
+function fastr_post_format_to_fa( $format = '' ) {
+	switch ( $format ) {
+		case 'aside' : $genericon_name = 'paint-brush'; break;
+		case 'chat' : $genericon_name = 'comments'; break;
+		case 'gallery' : $genericon_name = 'picture-o'; break;
+		case 'link' : $genericon_name = 'link'; break;
+		case 'image' : $genericon_name = 'image'; break;
+		case 'quote' : $genericon_name = 'quote-right'; break;
+		case 'status' : $genericon_name = 'comment'; break;
+		case 'video' : $genericon_name = 'film'; break;
+		case 'audio' : $genericon_name = 'volume-up'; break;
+		default : $genericon_name = false; break;
+	}
+
+	if ( $genericon_name ) {
+		return sprintf( '<span class="fa fa-%s"></span>', $genericon_name );
+	}
+	return '';
+}
+endif;

@@ -32,20 +32,26 @@
 				$url = $post_header_url && ! ( is_home() || is_archive() || is_search() ) ? $post_header_url : false;
 			}
 		?>
-		<header id="masthead" class="site-header"<?php echo $url ? ' style="background-image:url(\'' . $url . '\')"' : '' ?> role="banner">
-			<div id="top-strip">
-				<?php if ( ! is_home() ) : ?>
-					<div class="site-title">
-						<span>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-						</span>
-					</div>
-				<?php endif; ?>
 
-				<nav id="site-navigation" class="main-navigation" role="navigation">
-					<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-				</nav><!-- #site-navigation -->
-			</div>
+		<div id="top-strip">
+			<?php if ( ! is_home() ) : ?>
+				<div class="site-title">
+					<span>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+					</span>
+				</div>
+			<?php endif; ?>
+
+			<?php
+				wp_nav_menu( array(
+					'theme_location' => 'primary',
+					'container' => 'nav',
+					'fallback_cb' => false, # show nothing if no menu is set as "primary"
+				) );
+			?>
+		</div>
+
+		<header id="masthead" class="site-header"<?php echo $url ? ' style="background-image:url(\'' . $url . '\')"' : '' ?> role="banner">
 
 			<div class="container narrow">	
 				<?php if( is_home() ) : ?>
@@ -103,7 +109,7 @@
 								echo '<span class="fa fa-paperclip"></span> ' . get_the_title();
 							
 							elseif ( is_single() || is_page() ) :
-								the_title();
+								echo fastr_post_format_to_fa( get_post_format() ) . ' ' . get_the_title();
 
 							elseif ( is_search() ) :
 								_e( sprintf( 'Results for "%s"', get_search_query() ), 'fastr-child' );
