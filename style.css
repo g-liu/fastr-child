@@ -61,9 +61,9 @@ h6 { font-size: 1.5rem; }
 
 .site-title {
 	font-size: inherit;
-	line-height:initial;
-	margin-top: initial;
-	margin-bottom: initial;
+	line-height: normal;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 h1.site-title { font-size: 6rem; }
 h1.page-title { font-size: 5rem; }
@@ -98,8 +98,8 @@ input[type=submit] {
 	font-size: 85%;
 	background-color: #f0f0f0;
 	border-color: #f0f0f0;
-	text-shadow: initial;
-	box-shadow: initial;
+	text-shadow: none;
+	box-shadow: none;
 	padding: .5em 1em;
 	border-radius: 0.3em;
 
@@ -112,8 +112,8 @@ input[type=reset]:hover,
 input[type=submit]:hover {
 	background-color: #ddd;
 	border-color: #ddd;
-	text-shadow: initial;
-	box-shadow: initial;
+	text-shadow: none;
+	box-shadow: none;
 	color: #444;
 }
 
@@ -294,7 +294,6 @@ body.page .site-header .container {
 	color: #e2e2e2;
 }
 #top-strip .main-navigation ul ul {
-	bottom: initial;
 	top: 1.5em;
 }
 
@@ -314,7 +313,7 @@ body.page .site-header .container {
 }
 
 .entry-header {
-	margin-top: initial;
+	margin-top: 0;
 }
 
 .site-header .entry-meta,
@@ -334,12 +333,12 @@ body.page .site-header .container {
 	padding: 1em;
 }
 .sticky header {
-	padding-left: initial;
-	border-left: initial;
+	padding-left: 0;
+	border-left: none;
 }
 .sticky .entry-summary {
 	border: none;
-	padding-bottom: initial;
+	padding-bottom: none;
 }
 
 .entry-content iframe,
@@ -542,8 +541,8 @@ p.form-submit {
 }
 .page-links > span {
 	cursor: auto;
-	background-color: initial;
-	color: initial;
+	background-color: transparent;
+	color: black;
 	border-color: transparent;
 }
 .page-links > a.next,
@@ -554,7 +553,7 @@ p.form-submit {
 }
 
 .site-footer {
-	text-align: initial;
+	text-align: left;
 	color: #9aa7ac;
 	font-size: 1.42rem;
 	line-height: 1.66em;
