@@ -12,8 +12,8 @@
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'fastr' ),
-				'after'  => '</div>',
+				'before' => '<nav class="page-links">' . __( 'Pages:', 'fastr' ),
+				'after'  => '</nav>',
 			) );
 		?>
 	</div><!-- .entry-content -->

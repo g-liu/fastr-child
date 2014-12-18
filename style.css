@@ -546,6 +546,12 @@ p.form-submit {
 	color: initial;
 	border-color: transparent;
 }
+.page-links > a.next,
+.page-links > a.prev {
+	width: auto;
+	padding-left: .5em;
+	padding-right: .5em;
+}
 
 .site-footer {
 	text-align: initial;

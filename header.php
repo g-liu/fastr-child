@@ -29,7 +29,7 @@
 				$url = $post_header_url ? $post_header_url : $url;
 			}
 			else {
-				$url = $post_header_url && ! ( is_home() || is_archive() ) ? $post_header_url : false;
+				$url = $post_header_url && ! ( is_home() || is_archive() || is_search() ) ? $post_header_url : false;
 			}
 		?>
 		<header id="masthead" class="site-header"<?php echo $url ? ' style="background-image:url(\'' . $url . '\')"' : '' ?> role="banner">
