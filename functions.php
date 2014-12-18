@@ -1,6 +1,4 @@
 <?php
-error_reporting( E_ALL );
-ini_set( "display_errors", 1 );
 
 function enqueue_parent_theme_style() {
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
@@ -60,13 +58,18 @@ function fastr_child_widgets_init() {
 }
 add_action( 'widgets_init', 'fastr_child_widgets_init' );
 
+/*
+function fastr_child_add_editor_styles() {
+    add_editor_style( 'style.css' );
+}
+add_action( 'after_setup_theme', 'fastr_child_add_editor_styles' );
+*/
+
 if ( file_exists( get_stylesheet_directory() . '/inc/template-tags.php' ) )
 	require get_stylesheet_directory() . '/inc/template-tags.php';
 
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'custom-header', array(
-	'width' => 1400,
-	'height' => 500,
 	'flex-height' => true,
 	'flex-width' => true,
 	'default-text-color' => '#fff',

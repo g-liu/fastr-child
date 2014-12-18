@@ -54,12 +54,23 @@ function fastr_post_nav() {
 	<nav class="navigation post-navigation" role="navigation">
 		<h3 class="screen-reader-text"><?php _e( 'Post navigation', 'fastr' ); ?></h3>
 		<div class="nav-links">
-			<div class="nav-previous">
-				<?php previous_post_link( '%link', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', 'fastr' ) ); ?>
-			</div>
-			<div class="nav-next">
-				<?php next_post_link(     '%link', _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link',     'fastr' ) ); ?>
-			</div>
+			<?php if ( $previous ) : ?>
+				<div class="nav-previous">
+					<div class="nav-previous-label">
+						<span>Previous post</span>
+					</div>
+					<?php previous_post_link( '%link', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', 'fastr' ) ); ?>
+				</div>
+			<?php endif; ?>
+
+			<?php if ( $next ) : ?>
+				<div class="nav-next">
+					<div class="nav-next-label">
+						<span>Next post</span>
+					</div>
+					<?php next_post_link(     '%link', _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link',     'fastr' ) ); ?>
+				</div>
+			<?php endif; ?>
 		</div><!-- .nav-links -->
 	</nav><!-- .navigation -->
 	<?php
@@ -118,7 +129,7 @@ function fastr_comment( $comment, $args, $depth ) {
 					'depth'      => $depth,
 					'max_depth'  => $args['max_depth'],
 					'before'     => '<div class="reply">',
-					'reply_text' => 'Reply ↓',
+					'reply_text' => 'Reply &darr;',
 					'after'      => '</div>',
 				) ) );
 			?>
