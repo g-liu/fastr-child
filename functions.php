@@ -31,6 +31,8 @@ if ( ! function_exists( 'additional_styles_and_scripts' ) ) :
  */
 function additional_styles_and_scripts() {
 	wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' );
+	// place this guy in the footer
+	wp_enqueue_script( 'core-javascript', get_stylesheet_directory_uri() . '/js/fastr-child.js', array( 'jquery-core' ), false, true );
 }
 endif;
 add_action( 'wp_enqueue_scripts', 'additional_styles_and_scripts' );

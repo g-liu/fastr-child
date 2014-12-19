@@ -15,14 +15,17 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,700italic,400italic&subset=latin,latin-ext);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400italic,700italic,700,400&subset=latin,latin-ext);
 
+html {
+	position: relative;
+}
+
 body, input, select, button, textarea {
 	line-height: 1.42em;
 }
 body {
 	font-family: 'Droid Serif', Georgia, serif;
-	position: relative;
 }
-input, select, button, textarea, .page-links {
+input, select, button, textarea, .page-links, #top-strip {
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
 	font-size: 90%;
 }
@@ -254,7 +257,7 @@ body.page .site-header .container {
 	box-sizing: border-box;
 
 	padding: .5em .5em 1em;
-	font-size: 90%;
+	font-size: 80%;
 	text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 	zoom: 1;
 	z-index: 1000;
@@ -293,8 +296,9 @@ ul.menu ul {
 }
 ul.menu > li {
 	display: inline-block;
+	position: relative;
 }
-ul.menu > li.menu-item-has-children > a:after {
+ul.menu li.menu-item-has-children > a:after {
 	content: '\25BE';
 	display: inline-block;
 	padding-left: 0.25em;
@@ -309,18 +313,35 @@ ul.menu > li a {
 ul.menu ul {
 	display: none;
 	position: absolute;
-	top: 2em;
+	top: 100%;
+	left: 0.5em;
+	width: 225px;
 
 	background-color: #444;
 	box-shadow: 3px 4px 7px -1px rgba(0, 0, 0, 0.15);
+	z-index: 10;
+}
+ul.menu > li:last-child ul {
+	left: inherit;
+	right: 0.5em;
 }
 ul.menu ul ul {
-	top: 1.5em;
+	left: 100%;
+	top: 0;
+
+	z-index: 100;
+}
+ul.menu > li:last-child ul ul {
+	left: inherit;
+	right: 100%;
 }
 ul.menu ul li {
 	padding-left: .5em;
 	max-width: 250px;
-	border-bottom: 1px solid #111;
+	border-bottom: 1px solid #383838;
+}
+ul.menu ul li.menu-item-has-children > a:after {
+	content: '\25B8'
 }
 ul.menu ul li:last-child {
 	border-bottom: none;
@@ -329,14 +350,25 @@ ul.menu ul li:hover {
 	border-left: 4px solid orange;
 	padding-left: -webkit-calc(.5em - 4px);
 	padding-left: calc(.5em - 4px);
+	background-color: #555;
+}
+ul.menu ul li:hover a {
+	color: white;
 }
 ul.menu ul li a {
 	line-height: 1.4;
 	padding-top: 4px;
 	padding-bottom: 4px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 ul.menu li:hover > ul {
 	display: block;
+}
+
+#content {
+	padding: 1em 2em;
+	background-color: #fff;
 }
 
 .container {
@@ -496,6 +528,7 @@ li.comment.depth-10 > #respond {
 	background-color: #f4f4f4;
 }
 
+#respond input[type=submit],
 li.comment.depth-2 > #respond input[type=submit],
 li.comment.depth-4 > #respond input[type=submit],
 li.comment.depth-6 > #respond input[type=submit],
@@ -505,6 +538,10 @@ li.comment.depth-10 > #respond input[type=submit] {
 	border-color: #ccc;
 }
 
+#respond {
+	padding: 1em;
+	background-color: #f4f4f4;
+}
 li.comment #respond {
 	padding: 1em 1em 0.5em;
 	margin-bottom: 1.5em;
