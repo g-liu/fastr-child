@@ -19,7 +19,11 @@ get_header(); ?>
 
 				<?php get_template_part( 'content', 'page' ); ?>
 
-				<?php comments_template(); ?>
+				<?php if ( ! is_front_page() ) : ?>
+				
+					<?php comments_template(); ?>
+
+				<?php endif; ?>
 
 			<?php endwhile; // end of the loop. ?>
 

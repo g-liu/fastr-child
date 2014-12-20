@@ -31,10 +31,10 @@
 			$url = get_header_image();
 			$post_header_url = $post ? wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ) : false;
 			if( $url ) {
-				$url = $post_header_url ? $post_header_url : ( is_home() || is_archive() || is_search() ? $url : '' );
+				$url = $post_header_url ? $post_header_url : ( is_front_page() || is_home() || is_archive() || is_search() ? $url : '' );
 			}
 			else {
-				$url = $post_header_url && ! ( is_home() || is_archive() || is_search() ) ? $post_header_url : false;
+				$url = $post_header_url && ! ( is_front_page() || is_home() || is_archive() || is_search() ) ? $post_header_url : false;
 			}
 		?>
 
@@ -137,7 +137,7 @@
 					</h1><!-- #page-title -->
 
 					<div class="entry-meta">
-						<?php if ( is_single() || is_page() ) : ?>
+						<?php if ( is_single() || is_page() && ! is_front_page() ) : ?>
 							<div class="meta-date">
 								<?php fastr_posted_on(); ?>
 							</div>
