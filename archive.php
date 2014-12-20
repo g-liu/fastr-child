@@ -30,7 +30,14 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php paginate_links(); ?>
+			<?php
+				echo paginate_links( array(
+					'format' => 'page/%#%',
+					'add_args' => array(
+						's' => get_search_query(),
+					),
+				) );
+			?>
 
 		<?php else : ?>
 

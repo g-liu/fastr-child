@@ -6,6 +6,9 @@
  *
  * @package fastr-child
  */
+$header_text_color = get_theme_mod( 'header_textcolor', 'inherit' );
+$header_bg_color = get_theme_mod( 'header_color', 'inherit' );
+$tagline_text_color = get_theme_mod( 'tagline_textcolor', 'inherit' );
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -51,15 +54,19 @@
 			?>
 		</div>
 
-		<header id="masthead" class="site-header"<?php echo $url ? ' style="background-image:url(\'' . $url . '\')"' : '' ?> role="banner">
+		<header id="masthead" class="site-header" style="background-color:<?php echo $header_bg_color; ?>;<?php echo $url ? 'background-image:url(\'' . $url . '\');' : '' ?>" role="banner">
 
 			<div class="container narrow">	
-				<?php if( is_home() ) : ?>
+				<?php if ( is_home() ) : ?>
 					<div class="site-branding text-center">
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-						<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+						<h1 class="site-title">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="color: #<?php echo $header_text_color; ?>;" rel="home">
+								<?php bloginfo( 'name' ); ?>
+							</a>
+						</h1>
+						<h2 class="site-description" style="color:<?php echo $tagline_text_color; ?>"><?php bloginfo( 'description' ); ?></h2>
 					</div>
-				<?php else: ?>
+				<?php else : ?>
 					<h1 class="page-title">
 						<?php
 							if ( is_category() ) :
