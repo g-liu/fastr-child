@@ -27,7 +27,7 @@ get_header(); ?>
 						),
 					) );
 				?>
-			</nav>
+			</nav><!-- #page-links -->
 
 		<?php else : ?>
 

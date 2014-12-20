@@ -85,6 +85,14 @@ a {
 a:visited {
 	color: #5a3a5a;
 }
+h1.entry-title a,
+h2.entry-title a,
+h3.entry-title a,
+h4.entry-title a,
+h5.entry-title a,
+h6.entry-title a {
+	color: #4a4a4a;
+}
 
 audio,
 video {
@@ -299,7 +307,10 @@ body.page .site-header .container {
 	margin-bottom: 0;
 }
 h1.site-title { font-size: 6rem; }
-h1.page-title { font-size: 5rem; }
+h1.page-title,
+h1.entry-title {
+	font-size: 5rem;
+}
 h2.site-description {
 	line-height: 1.4em;
 	margin-bottom: 0;

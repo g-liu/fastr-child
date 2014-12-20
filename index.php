@@ -36,7 +36,7 @@ get_header(); ?>
 						'format' => 'page/%#%',
 					) );
 				?>
-			</nav>
+			</nav><!-- #page-links -->
 
 		<?php else : # no posts ?>
 
