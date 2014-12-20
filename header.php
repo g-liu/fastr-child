@@ -6,10 +6,12 @@
  *
  * @package fastr-child
  */
-$header_text_color = get_theme_mod( 'header_textcolor', 'inherit' );
-$header_bg_color = get_theme_mod( 'header_color', 'inherit' );
-$tagline_text_color = get_theme_mod( 'tagline_textcolor', 'inherit' );
+
+	$header_text_color = get_theme_mod( 'header_textcolor', 'inherit' );
+	$header_bg_color = get_theme_mod( 'header_color', 'inherit' );
+	$tagline_text_color = get_theme_mod( 'tagline_textcolor', 'inherit' );
 ?>
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -29,7 +31,7 @@ $tagline_text_color = get_theme_mod( 'tagline_textcolor', 'inherit' );
 			$url = get_header_image();
 			$post_header_url = $post ? wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ) : false;
 			if( $url ) {
-				$url = $post_header_url ? $post_header_url : $url;
+				$url = $post_header_url ? $post_header_url : ( is_home() || is_archive() || is_search() ? $url : '' );
 			}
 			else {
 				$url = $post_header_url && ! ( is_home() || is_archive() || is_search() ) ? $post_header_url : false;
@@ -56,7 +58,8 @@ $tagline_text_color = get_theme_mod( 'tagline_textcolor', 'inherit' );
 
 		<header id="masthead" class="site-header" style="background-color:<?php echo $header_bg_color; ?>;<?php echo $url ? 'background-image:url(\'' . $url . '\');' : '' ?>" role="banner">
 
-			<div class="container narrow">	
+			<div class="container narrow">
+
 				<?php if ( is_home() ) : ?>
 					<div class="site-branding text-center">
 						<h1 class="site-title">
@@ -67,6 +70,16 @@ $tagline_text_color = get_theme_mod( 'tagline_textcolor', 'inherit' );
 						<h2 class="site-description" style="color:<?php echo $tagline_text_color; ?>"><?php bloginfo( 'description' ); ?></h2>
 					</div>
 				<?php else : ?>
+					<?php if ( is_author() ) : ?>
+						<div class="gravatar author-avatar">
+							<?php
+								$author = get_queried_object(); # works around edge case where author has no post
+								if ( $author ) {
+									echo get_avatar( $author->ID, 128, 'mm' );
+								}
+							?>
+						</div>
+					<?php endif; ?>
 					<h1 class="page-title">
 						<?php
 							if ( is_category() ) :
@@ -76,16 +89,8 @@ $tagline_text_color = get_theme_mod( 'tagline_textcolor', 'inherit' );
 								single_tag_title( '#' );
 
 							elseif ( is_author() ) :
-								/* Queue the first post, that way we know
-								 * what author we're dealing with (if that is the case).
-								*/
-								the_post();
-								printf( __( 'Author: %s', 'fastr' ), '<span class="vcard">' . get_the_author() . '</span>' );
-								/* Since we called the_post() above, we need to
-								 * rewind the loop back to the beginning that way
-								 * we can run the loop properly, in full.
-								 */
-								rewind_posts();
+								$author = get_queried_object();
+								printf( __( 'Posts by %s', 'fastr-child' ), '<span class="vcard">' . ( $author ? $author->display_name : 'the author' ) . '</span>' );
 
 							elseif ( is_day() ) :
 								printf( __( 'Posts from %s', 'fastr-child' ), '<span>' . get_the_date() . '</span>' );
@@ -163,12 +168,21 @@ $tagline_text_color = get_theme_mod( 'tagline_textcolor', 'inherit' );
 							$term_description = term_description();
 							if ( ! empty( $term_description ) ) :
 								printf( '<div class="taxonomy-description">%s</div>', $term_description );
+							elseif ( is_author() ) :
+								$author = get_queried_object();
+								if ( $author && ! empty ( $author->description ) ) :
+									// show the author's biography
+									printf( '<div class="taxonomy-description">%s</div>', $author->description );
+								endif;
+								
 							endif;
 						?>
 
 					</div><!-- .entry-meta -->
 				<?php endif; ?>
-			</div>
+
+			</div><!-- .container.narrow -->
 		</header><!-- #masthead -->
 
 		<div id="content" class="site-content container">
+

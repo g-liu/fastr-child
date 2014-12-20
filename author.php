@@ -1,15 +1,13 @@
 <?php
 /**
- * The template for displaying Archive pages.
+ * Displays an archive of all posts given any author.
  *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
- * @package fastr
+ * @package fastr-child
  */
 
-get_header(); ?>
+get_header( 'author' ); ?>
 
-	<section id="primary" class="content-area">
+	<div id="primary" class="content-area">
 		<div id="main" class="site-main" role="main">
 
 		<?php if ( have_posts() ) : ?>
@@ -36,12 +34,22 @@ get_header(); ?>
 
 		<?php else : ?>
 
-			<?php get_template_part( 'content', 'none' ); ?>
+			<?php $author = get_queried_object(); ?>
+
+			<section class="no-results">
+				<header class="page-header">
+					<h2 class="page-title"><?php _e( 'No posts... yet!', 'fastr-child' ); ?></h2>
+				</header><!-- .page-header -->
+
+				<div class="page-content">
+					<p>Looks like <?php echo $author ? $author->display_name : 'the author'; ?> hasn't posted anything yet. Check back soon!</p>
+				</div><!-- .page-content -->
+			</section><!-- .no-results -->
 
 		<?php endif; ?>
 
 		</div><!-- #main -->
-	</section><!-- #primary -->
+	</div><!-- #primary -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

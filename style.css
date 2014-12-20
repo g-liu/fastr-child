@@ -295,6 +295,12 @@ body.page .site-header .container {
 	margin-top: 250px;
 }
 
+.site-header .gravatar,
+.site-header .gravatar img.avatar {
+	border-radius: 50%;
+	text-align: center;
+}
+
 .site-header h1,
 .site-header h2 {
 	color: white;
@@ -461,6 +467,11 @@ ul.menu li:hover > ul {
 
 .entry-header {
 	margin-top: 0;
+}
+
+.entry-meta .taxonomy-description {
+	font-size: 1.6rem;
+	line-height: 1.5;
 }
 
 .site-header .entry-meta,

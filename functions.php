@@ -1,12 +1,7 @@
 <?php
 
-if ( file_exists( get_stylesheet_directory() . '/inc/template-tags.php' ) ) {
-	require_once get_stylesheet_directory() . '/inc/template-tags.php';
-}
-
-if ( file_exists( get_stylesheet_directory() . '/inc/customizer.php' ) ) {
-	require_once get_stylesheet_directory() . '/inc/customizer.php';
-}
+require_once get_stylesheet_directory() . '/inc/template-tags.php';
+require_once get_stylesheet_directory() . '/inc/customizer.php';
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -34,8 +29,13 @@ if ( ! function_exists( 'additional_styles_and_scripts' ) ) :
  * Add any additional styles and scripts used by this theme
  */
 function additional_styles_and_scripts() {
+	/** font-awesome fonticons */
 	wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' );
-	// place this guy in the footer
+
+	/** print styles */
+	wp_enqueue_style( 'print-styles', get_stylesheet_directory_uri() . '/print.css', array(), false, 'print' );
+
+	/** theme javascript */
 	wp_enqueue_script( 'core-javascript', get_stylesheet_directory_uri() . '/js/fastr-child.js', array( 'jquery-core' ), false, true );
 }
 endif;

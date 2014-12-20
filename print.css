@@ -1,0 +1,41 @@
+/*
+Theme Name: fastr-child
+
+This stylesheet is included in the theme for printing out onto physical paper.
+There is no need to wrap the entire contents of this file in a @media query.
+
+*/
+
+/* Don't display useless material */
+#top-strip,
+.page-links,
+.post-navigation,
+.site-footer {
+	display: none;
+}
+
+.site-header .container {
+	margin-top: 0;
+}
+
+pre {
+    white-space: -moz-pre-wrap;
+    white-space:   -o-pre-wrap;
+    white-space:     -pre-wrap;
+    white-space:      pre-wrap;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+body.home .hentry,
+img,
+table,
+blockquote,
+address {
+	page-break-inside: avoid;
+}
+
+#content {
+	padding: 0;
+	width: 100%;
+}
