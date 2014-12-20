@@ -10,8 +10,6 @@
 if ( ! function_exists( 'fastr_paging_nav' ) ) :
 /**
  * Display navigation to next/previous set of posts when applicable.
- *
- * @return void
  */
 function fastr_paging_nav() {
 	// Don't print empty markup if there's only one page.
@@ -39,8 +37,6 @@ endif;
 if ( ! function_exists( 'fastr_post_nav' ) ) :
 /**
  * Display navigation to next/previous post when applicable.
- *
- * @return void
  */
 function fastr_post_nav() {
 	// Don't print empty markup if there's nowhere to navigate.
@@ -84,6 +80,12 @@ if ( ! function_exists( 'fastr_comment' ) ) :
  * Template for comments and pingbacks.
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
+ *
+ * @param object $comment The comment object.
+ *
+ * @param mixed[] $args An array of arguments
+ *
+ * @param int $depth the maximum depth which to display the comments
  */
 function fastr_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
@@ -149,7 +151,7 @@ if ( ! function_exists( 'fastr_comment_nav' ) ) :
  */
 function fastr_comment_nav() {
 	if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
-		<nav id="comment-nav-below" class="comment-navigation" role="navigation">
+		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
 			<h3 class="screen-reader-text"><?php _e( 'Comment navigation', 'fastr' ); ?></h3>
 			<div class="nav-links">
 				<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'fastr' ) ); ?></div>
@@ -188,7 +190,7 @@ if ( ! function_exists( 'get_first_attachment_metadata' ) ) :
 /**
  * Retrieves the metadata for the first attachment to a post
  * 
- * @return an array of the same format as wp_get_attachment_metadata(), or false if no attachments
+ * @return mixed[] An array of the same format as wp_get_attachment_metadata(), or false if no attachments.
  */
 function fastr_get_first_attachment_metadata() {
 	global $post;
@@ -213,7 +215,7 @@ if ( ! function_exists( 'get_first_image' ) ) :
  *
  * @see http://www.wprecipes.com/how-to-get-the-first-image-from-the-post-and-display-it
  *
- * @return HTML element of the image
+ * @return string HTML element of the image.
  */
 function fastr_get_first_image() {
 	global $post;
@@ -237,9 +239,9 @@ if ( ! function_exists( 'fastr_post_format_to_fa' ) ) :
  * 
  * @see http://fontawesome.io/icons
  * 
- * @param {string} $format - the post format
+ * @param string $format The post format.
  *
- * @return an HTML string containing the font-awesome icon, or empty string
+ * @return string An HTML string containing the font-awesome icon, or empty string
  * 	if no associated genericon
  */
 function fastr_post_format_to_fa( $format = '' ) {

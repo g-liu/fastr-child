@@ -47,7 +47,7 @@ if ( ! function_exists( 'custom_excerpt_length' ) ) :
 /**
  * Redefine the excerpt length in words
  *
- * @param {string} $length - the maximum length of the excerpt in words
+ * @param string $length The maximum length of the excerpt in words.
  */
 function custom_excerpt_length( $length ) {
 	return 60;
@@ -60,7 +60,7 @@ if ( ! function_exists( 'fastr_child_widgets_init' ) ) :
 
 /**
  * Register widgetized area and update sidebar with default widgets.
- * This will replace "BottomBar" the parent theme
+ *  This will replace "BottomBar" the parent theme
  */
 function fastr_child_widgets_init() {
 	register_sidebar( array(

@@ -127,7 +127,7 @@
 								_e( sprintf( 'Results for "%s"', get_search_query() ), 'fastr-child' );
 
 							elseif ( is_404() ) :
-								_e( 'Oops! That page can&rsquo;t be found.', 'fastr' );
+								_e( '404: File not found', 'fastr' );
 
 							else :
 								_e( 'Archives', 'fastr' );

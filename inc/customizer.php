@@ -1,11 +1,18 @@
 <?php
 
+/**
+ * Register all settings, sections, and controls for the theme
+ *
+ * @param object $wp_customize The wp-customize callback object.
+ */
 function fastr_child_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'header_color' , array(
 		'default' => '#333333',
+		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 	$wp_customize->add_setting( 'tagline_textcolor', array(
 		'default' => '#EEEEEE',
+		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
 	$wp_customize->add_control(
@@ -33,3 +40,23 @@ function fastr_child_customize_register( $wp_customize ) {
 	);
 }
 add_action( 'customize_register', 'fastr_child_customize_register' );
+
+
+if ( ! function_exists( 'sanitize_hex_color' ) ) :
+/**
+ * Sanitize a generic hex color
+ *
+ * @param string $color The color to be sanitized.
+ *
+ * @return string The sanitized color.
+ */
+function sanitize_hex_color( $color ) {
+	if ( $color[0] != '#' ) {
+		$color = '#' . $color;
+	}
+	if ( ! preg_match( '/(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i', $color ) ) {
+		return '#000000';
+	}
+	return $color;
+}
+endif;
