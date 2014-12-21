@@ -32,34 +32,13 @@ switch( $cols ) {
 		<a class="back-to-top" href="#">&uarr;</a>
 		<?php if ( $cols ) : ?>
 			<div class="container<?php echo $width; ?> row">
-				<?php foreach ( $widget_active as $key=>$active ) : ?>
-					<div class="col col-1-<?php echo $cols ?>">
+				<?php foreach ( $widget_active as $key => $active ) : ?>
+					<div class="col col-1-<?php echo $cols; ?>">
 						<?php if ( ! dynamic_sidebar( $active ) ) : ?>
 
 						<?php endif; ?>
 					</div>
 				<?php endforeach; ?>
-				
-				<!--<div class="col col-1-4">
-					<?php if ( ! dynamic_sidebar( 'sidebar-far-left' ) ) : ?>
-
-					<?php endif; ?>
-				</div>
-				<div class="col col-1-4">
-					<?php if ( ! dynamic_sidebar( 'sidebar-left' ) ) : ?>
-
-					<?php endif; ?>
-				</div>
-				<div class="col col-1-4">
-					<?php if ( ! dynamic_sidebar( 'sidebar-right' ) ) : ?>
-
-					<?php endif; ?>
-				</div>
-				<div class="col col-1-4">
-					<?php if ( ! dynamic_sidebar( 'sidebar-far-right' ) ) : ?>
-
-					<?php endif; ?>
-				</div>-->
 			</div><!-- .container.wide -->
 		<?php endif; ?>
 		<div class="container">

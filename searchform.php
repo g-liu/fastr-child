@@ -9,9 +9,8 @@
 	<label>
 		<span class="screen-reader-text"><?php _ex( 'Search for:', 'label', 'fastr' ); ?></span>
 		<div class="input-group">
-			<span class="fa fa-search"></span>
 			<input type="search" class="search-field" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'fastr' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" />
+			<input type="submit" class="search-submit" value="&#xf002;" />
 		</div>
 	</label>
-	<input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button', 'fastr' ); ?>">
 </form>

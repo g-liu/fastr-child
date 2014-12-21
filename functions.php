@@ -56,6 +56,24 @@ endif;
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 
+if ( ! function_exists( 'fastr_child_add_search_box' ) ) :
+/**
+ * Adds a search box to the navigation menu
+ *
+ * @see http://www.wprecipes.com/how-to-automatically-add-a-search-field-to-your-navigation-menu
+ *
+ * @param string $items The existing navigation bar items.
+ *
+ * @param mixed[] $args Any additional arguments.
+ */
+function fastr_child_add_search_box( $items, $args ) {
+	$items .= '<li id="menu-item-search" class="menu-item menu-item-search">' . get_search_form( false ) . '</li>';
+	return $items;
+}
+add_filter( 'wp_nav_menu_items', 'fastr_child_add_search_box', 10, 2 );
+endif;
+
+
 if ( ! function_exists( 'fastr_child_widgets_init' ) ) :
 
 /**

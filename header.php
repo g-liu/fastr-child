@@ -38,6 +38,7 @@
 			}
 		?>
 
+
 		<div id="top-strip">
 			<?php if ( ! is_home() ) : ?>
 				<div class="site-title">
@@ -47,6 +48,10 @@
 				</div>
 			<?php endif; ?>
 
+			<button class="menu-toggle"><span class="fa fa-bars fa-lg"></span></button>
+
+			<div class="sidebar-cover"></div>
+			
 			<?php
 				wp_nav_menu( array(
 					'theme_location' => 'primary',
@@ -117,7 +122,6 @@
 								_e( 'Links', 'fastr' );
 
 							elseif ( is_attachment() ) :
-								# _e( sprintf( 'Attachment: %s', get_the_title() ), 'fastr-child' );
 								echo '<span class="fa fa-paperclip"></span> ' . get_the_title();
 							
 							elseif ( is_single() || is_page() ) :
@@ -141,6 +145,7 @@
 							<div class="meta-date">
 								<?php fastr_posted_on(); ?>
 							</div>
+
 							<?php
 								/* translators: used between list items, there is a space after the comma */
 								$categories_list = get_the_category_list( __( ', ', 'fastr' ) );

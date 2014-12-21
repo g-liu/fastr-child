@@ -27,7 +27,6 @@ pre {
     overflow: hidden;
 }
 
-body.home .hentry,
 img,
 table,
 blockquote,
@@ -38,4 +37,9 @@ address {
 #content {
 	padding: 0;
 	width: 100%;
+}
+
+.entry-summary:after {
+    content: '';
+    display: none;
 }

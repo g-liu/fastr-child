@@ -16,4 +16,7 @@
 			) );
 		?>
 	</div><!-- .entry-content -->
+
+	<?php fastr_author_info(); ?>
+
 </article><!-- #post-## -->
