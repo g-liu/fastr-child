@@ -30,13 +30,11 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<nav class="page-links">
-				<?php
-					echo paginate_links( array(
-						'format' => 'page/%#%',
-					) );
-				?>
-			</nav><!-- #page-links -->
+			<?php
+				fastr_paginate_links( array(
+					'format' => 'page/%#%',
+				) );
+			?>
 
 		<?php else : # no posts ?>
 

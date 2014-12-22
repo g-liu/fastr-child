@@ -18,16 +18,14 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<nav class="page-links">
-				<?php
-					echo paginate_links( array(
-						'format' => 'page/%#%',
-						'add_args' => array(
-							's' => get_search_query(),
-						),
-					) );
-				?>
-			</nav><!-- #page-links -->
+			<?php
+				fastr_paginate_links( array(
+					'format' => 'page/%#%',
+					'add_args' => array(
+						's' => get_search_query(),
+					),
+				) );
+			?>
 
 		<?php else : ?>
 

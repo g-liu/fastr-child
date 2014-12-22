@@ -199,6 +199,7 @@ tbody tr:nth-child(odd) { background-color: #f6f2f2; }
 th,
 td {
 	padding: 0 0.5em;
+	border: 1px solid #ccc;
 }
 th ul,
 th ol,
@@ -370,7 +371,7 @@ h2.site-description {
 }
 #top-strip a { color: #eee; }
 
-/** Navigation menu */
+/** Site navigation menu */
 .menu-toggle {
 	display: none;
 	float: right;
@@ -561,11 +562,21 @@ ul.menu .search-form .search-submit {
 	color: #444;
 }
 .nav-links .nav-previous a,
-.nav-links .nav-next a {
+.nav-links .nav-next a,
+.nav-links a {
 	border-radius: 2px;
 	background-color: #222;
 	color: #fff;
 	border: 1px solid #222;
+
+	-webkit-transition: background-color 0.15s, border 0.15s;
+	transition: background-color 0.15s, border 0.15s;
+}
+.nav-links a:hover,
+.nav-links a:focus,
+.nav-links a:active {
+	background-color: #57A3E8;
+	border-color: #57A3E8;
 }
 .nav-links .nav-previous-label,
 .nav-links .nav-next-label {
@@ -573,12 +584,33 @@ ul.menu .search-form .search-submit {
 }
 .nav-links .nav-previous-label { text-align: left; }
 .nav-links .nav-next-label { text-align: right; }
+/* pagination */
+.page-links a,
+.page-links span {
+	line-height: 31px;
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+}
+.page-links span {
+	cursor: auto;
+	background-color: transparent;
+	color: black;
+	border-color: transparent;
+}
+.page-links a.next,
+.page-links a.prev {
+	width: auto;
+	padding: 0 .5em;
+}
 
 .author-info {
-	margin-top: 1.5em;
+	margin-top: 3em;
 	padding: 1em;
 	background-color: floralwhite;
-	border-top: 4px solid #cdc;
+	border-top: 5px solid #EFEAC8;
 	zoom: 1;
 }
 .author-info .author-avatar {
@@ -587,6 +619,10 @@ ul.menu .search-form .search-submit {
 }
 .author-info .author-avatar img {
 	vertical-align: bottom;
+}
+.author-info .author-description {
+	font-size: 90%;
+	line-height: 1.4em;
 }
 
 .comments-area {
@@ -700,38 +736,6 @@ textarea#comment { resize: vertical; }
 
 p.form-allowed-tags { font-size: 90%; }
 p.form-submit { text-align: right; }
-
-/* pagination */
-.page-links > a,
-.page-links > span {
-	border: 1px solid #222;
-	background-color: #333;
-	color: #fff;
-	line-height: 31px;
-	width: 32px;
-	height: 32px;
-	display: inline-block;
-	text-align: center;
-	text-decoration: none;
-}
-.page-links > span {
-	cursor: auto;
-	background-color: transparent;
-	color: black;
-	border-color: transparent;
-}
-.page-links > a.next,
-.page-links > a.prev {
-	width: auto;
-	padding-left: .5em;
-	padding-right: .5em;
-}
-.page-links > a:hover,
-.page-links > a:focus,
-.page-links > a:active {
-	background-color: #57A3E8;
-	border-color: #57A3E8;
-}
 
 .site-footer {
 	text-align: left;
