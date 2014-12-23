@@ -372,12 +372,12 @@ h2.site-description {
 #top-strip a { color: #eee; }
 
 /** Site navigation menu */
-.menu-toggle {
+#menu-toggle {
 	display: none;
 	float: right;
 }
 
-.sidebar-cover {
+#sidebar-cover {
 	display: none;
 	position: fixed;
 	top: 0; left: 0;
@@ -826,7 +826,7 @@ form.search-form .input-group input[type=submit] {
 
 @media only screen and (max-width: 899px) {
 	body { overflow-x: hidden; }
-	.menu-toggle { display: block; }
+	#menu-toggle { display: block; }
 
 	#top-strip nav {
 		display: none;
@@ -837,10 +837,30 @@ form.search-form .input-group input[type=submit] {
 		max-width: 300px;
 		height: 100%;
 		background-color: #222;
+		z-index: 9999;
+	}
+
+	#top-strip .toggled-on ~ #sidebar-cover,
+	#top-strip .toggled-on ~ nav {
+		display: block;
+		animation-fill-mode: forwards;
+	}
+
+	#top-strip .toggled-on ~ #sidebar-cover {
+		-webkit-animation: fade-in 0.25s;
+		animation: fade-in 0.25s;
+	}
+
+	#top-strip .toggled-on ~ nav {
+		-webkit-animation: slide-in 0.25s;
+		animation: slide-in 0.25s;
 	}
 
 	#top-strip nav ul li { display: block; }
-	#top-strip nav ul ul { position: relative; }
+	#top-strip nav ul ul {
+		position: relative;
+		left: 0;
+	}
 	#top-strip ul.menu li:hover > ul { display: none; }
 }
 

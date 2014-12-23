@@ -48,9 +48,9 @@
 				</div>
 			<?php endif; ?>
 
-			<button class="menu-toggle"><span class="fa fa-bars fa-lg"></span></button>
+			<button id="menu-toggle"><span class="fa fa-bars fa-lg"></span></button>
 
-			<div class="sidebar-cover"></div>
+			<div id="sidebar-cover"></div>
 			
 			<?php
 				wp_nav_menu( array(
