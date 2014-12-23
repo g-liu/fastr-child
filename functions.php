@@ -135,6 +135,26 @@ function fastr_child_theme_setup() {
 	) );
 
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'caption' ) );
+	add_theme_support( 'title-tag' );
+
+	add_editor_style( array( 'css/editor-style.css' ) );
+	
+	remove_filter( 'wp_title', 'fastr_wp_title' );
 }
 endif;
 add_action( 'after_setup_theme', 'fastr_child_theme_setup' );
+
+
+if ( ! function_exists( '_wp_render_title_tag' ) ) :
+/**
+ * Backwards compatibility with title suppot
+ * 
+ * @see https://make.wordpress.org/core/2014/10/29/title-tags-in-4-1/
+ */
+function theme_slug_render_title() {
+?>
+	<title><?php wp_title( '|', true, 'right' ); ?></title>
+<?php
+}
+add_action( 'wp_head', 'theme_slug_render_title' );
+endif;
