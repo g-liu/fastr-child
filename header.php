@@ -28,12 +28,11 @@
 		<?php
 			do_action( 'before' );
 			$url = get_header_image();
-			$post_header_url = $post ? wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ) : false;
-			if( $url ) {
-				$url = $post_header_url ? $post_header_url : ( is_front_page() || is_home() || is_archive() || is_search() ? $url : '' );
-			}
-			else {
-				$url = $post_header_url && ! ( is_front_page() || is_home() || is_archive() || is_search() ) ? $post_header_url : false;
+
+			if ( is_singular() ) {
+				// show featured image instead for single posts and pages
+				$post_header_url = $post ? wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) ) : false;
+				$url = $post_header_url;
 			}
 		?>
 
