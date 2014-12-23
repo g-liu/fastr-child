@@ -1,6 +1,7 @@
 // see http://codex.wordpress.org/Function_Reference/wp_enqueue_script#jQuery_noConflict_Wrappers
 jQuery( document ).ready( function( $ ) {
 	$( '#menu-toggle, #sidebar-cover' ).click( function() {
+		// TODO: Animation on toggle-off
 		$( '#menu-toggle' ).toggleClass( 'toggled-on' );
 	} );
 
@@ -18,7 +19,7 @@ jQuery( document ).ready( function( $ ) {
 
 	$( document ).keydown( function( evt ) {
 		evt = evt || window.event;
-		if ( evt.keyCode == 27 ) { // ESC
+		if ( evt.keyCode == 27 && $( '#menu-toggle' ).hasClass( 'toggled-on' ) ) { // ESC
 			$( '#menu-toggle' ).removeClass( 'toggled-on' );
 		}
 	} );

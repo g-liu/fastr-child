@@ -388,36 +388,16 @@ h2.site-description {
 	z-index: 1000;
 }
 
-.slide-in {
-	-webkit-animation: slide-in 0.15s ease-out;
-	-webkit-animation-fill-mode: forwards;
-	animation: slide-in 0.15s ease-out;
-	animation-fill-mode: forwards;
-}
-.slide-out {
-	-webkit-animation: slide-in 0.15s ease-out 0s 1 reverse;
-	-webkit-animation-fill-mode: forwards;
-	animation: slide-in 0.15s ease-out 0s 1 reverse;
-	animation-fill-mode: forwards;
-}
-.fade-in {
-	-webkit-animation: fade-in 0.15s ease-out;
-	-webkit-animation-fill-mode: forwards;
-	animation: fade-in 0.15s ease-out;
-	animation-fill-mode: forwards;
-}
-.fade-out {
-	-webkit-animation: fade-in 0.15s ease-out 0s 1 reverse;
-	-webkit-animation-fill-mode: forwards;
-	animation: fade-in 0.15s ease-out 0s 1 reverse;
-	animation-fill-mode: forwards;
-}
-
 ul.menu,
 ul.menu ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+ul.menu .menu-item-mobile-only {
+	display: none;
+	border-bottom: 2px solid #666;
+	padding-top: 1em;
 }
 ul.menu > li {
 	display: inline-block;
@@ -429,7 +409,8 @@ ul.menu li.menu-item-has-children > a:after {
 	padding-left: 0.15em;
 	opacity: 0.9;
 }
-ul.menu > li a {
+ul.menu > li a,
+ul.menu > li span {
 	color: #eee;
 	text-decoration: none;
 	display: block;
@@ -507,6 +488,14 @@ ul.menu .search-form .search-submit {
 
 .hentry { margin-bottom: 1.5em; }
 .hentry p:last-child { margin-bottom: 0; }
+
+.site-main .hentry:last-of-type .entry-summary {
+	border-bottom: none;
+}
+.site-main .hentry:last-of-type .entry-summary:after {
+	content: none;
+	display: none;
+}
 
 .entry-header { margin-top: 0; }
 
@@ -828,6 +817,9 @@ form.search-form .input-group input[type=submit] {
 	body { overflow-x: hidden; }
 	#menu-toggle { display: block; }
 
+	#top-strip {
+		background: transparent;
+	}
 	#top-strip nav {
 		display: none;
 		position: fixed;
@@ -836,30 +828,66 @@ form.search-form .input-group input[type=submit] {
 		width: 300px;
 		max-width: 300px;
 		height: 100%;
-		background-color: #222;
+		overflow-y: auto;
+		background-color: white;
+		box-shadow: -1px 0 10px 3px rgba(0, 0, 0, 0.15);
 		z-index: 9999;
 	}
 
-	#top-strip .toggled-on ~ #sidebar-cover,
-	#top-strip .toggled-on ~ nav {
+	#top-strip nav .menu-item-mobile-only {
 		display: block;
+	}
+
+	#top-strip .toggled-on ~ #sidebar-cover,
+	#top-strip .toggled-off ~ #sidebar-cover,
+	#top-strip .toggled-on ~ nav,
+	#top-strip .toggled-off ~ nav {
+		display: block;
+		-webkit-animation-fill-mode: forwards;
 		animation-fill-mode: forwards;
 	}
-
-	#top-strip .toggled-on ~ #sidebar-cover {
-		-webkit-animation: fade-in 0.25s;
-		animation: fade-in 0.25s;
+	#top-strip .toggled-off ~ #sidebar-cover,
+	#top-strip .toggled-off ~ nav {
+		-webkit-animation-direction: reverse;
+		animation-direction: reverse;
 	}
 
-	#top-strip .toggled-on ~ nav {
-		-webkit-animation: slide-in 0.25s;
-		animation: slide-in 0.25s;
+	#top-strip .toggled-on ~ #sidebar-cover,
+	#top-strip .toggled-off ~ #sidebar-cover {
+		-webkit-animation: fade-in 0.15s;
+		animation: fade-in 0.15s;
 	}
 
-	#top-strip nav ul li { display: block; }
-	#top-strip nav ul ul {
-		position: relative;
-		left: 0;
+	#top-strip .toggled-on ~ nav,
+	#top-strip .toggled-off ~ nav {
+		-webkit-animation: slide-in 0.15s;
+		animation: slide-in 0.15s;
+	}
+
+	ul.menu li {
+		display: block;
+		font-size: 2rem;
+	}
+	#top-strip ul.menu a,
+	#top-strip ul.menu span {
+		color: black;
+		text-shadow: none;
+		padding-top: .5em;
+		padding-bottom: .5em;
+	}
+	ul.menu ul {
+		position: static;
+		box-shadow: none;
+		background-color: white;
+	}
+	ul.menu ul li:hover {
+		background: none;
+	}
+	#top-strip ul.menu ul a {
+		color: #333;
+	}
+	ul.menu ul li.menu-item-has-children > a:after {
+		content: '\25BE';
 	}
 	#top-strip ul.menu li:hover > ul { display: none; }
 }

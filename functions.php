@@ -58,7 +58,7 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 if ( ! function_exists( 'fastr_child_add_search_box' ) ) :
 /**
- * Adds a search box to the navigation menu
+ * Adds a search box and a mobile-only label to the navigation menu
  *
  * @see http://www.wprecipes.com/how-to-automatically-add-a-search-field-to-your-navigation-menu
  *
@@ -67,6 +67,7 @@ if ( ! function_exists( 'fastr_child_add_search_box' ) ) :
  * @param mixed[] $args Any additional arguments.
  */
 function fastr_child_add_search_box( $items, $args ) {
+	$items = '<li id="menu-item-mobile-only" class="menu-item menu-item-mobile-only"><span>Navigation</span></li>' . $items;
 	$items .= '<li id="menu-item-search" class="menu-item menu-item-search">' . get_search_form( false ) . '</li>';
 	return $items;
 }
