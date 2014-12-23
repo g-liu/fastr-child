@@ -1,5 +1,14 @@
 // see http://codex.wordpress.org/Function_Reference/wp_enqueue_script#jQuery_noConflict_Wrappers
 jQuery( document ).ready( function( $ ) {
+	// Smooth scroll the 'back to top' link
+	$( 'a.back-to-top' ).click( function( evt ) {
+		$( 'html, body' ).animate( {
+			scrollTop: 0
+		}, 300 );
+		evt.preventDefault();
+	} );
+
+	var mobileVisible = $( '#menu-toggle' );
 	$( '#menu-toggle, #sidebar-cover' ).click( function() {
 		// TODO: Animation on toggle-off
 		$( '#menu-toggle' ).toggleClass( 'toggled-on' );

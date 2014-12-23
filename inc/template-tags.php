@@ -93,6 +93,27 @@ function fastr_paginate_links( $args ) {
 endif;
 
 
+if ( ! function_exists( 'fastr_link_pages' ) ) :
+/**
+ * A wrapper for pagination on single posts. Displays pagination if and only if there are multiple pages
+ * through which to navigate.
+ *
+ * @args mixed[] $args An array of arguments. Accepts the same parameters as wp_link_pages.
+ */
+function fastr_link_pages( $args ) {
+	global $multipage;
+	if ( $multipage !== 0 ) :
+	?>
+		<nav class="navigation page-links" role="navigation">
+			<h3 class="screen-reader-text">Page navigation</h3>
+			<?php wp_link_pages( $args ); ?>
+		</nav><!-- .navigation -->
+	<?php
+	endif;
+}
+endif;
+
+
 if ( ! function_exists( 'fastr_author_info' ) ) :
 /**
  * Displays author information

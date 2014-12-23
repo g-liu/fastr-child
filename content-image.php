@@ -23,7 +23,7 @@
 		</div><!-- .entry-attachment -->
 
 		<?php
-			wp_link_pages( array(
+			fastr_link_pages( array(
 				'before' => '<nav class="page-links">',
 				'after'  => '</nav>',
 				'link_before' => '<span>',

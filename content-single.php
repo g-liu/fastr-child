@@ -8,9 +8,9 @@
 	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php
-			wp_link_pages( array(
-				'before' => '<nav class="page-links">',
-				'after'  => '</nav>',
+			fastr_link_pages( array(
+				'before' => '<div class="nav-links">',
+				'after'  => '</div>',
 				'link_before' => '<span>',
 				'link_after' => '</span>',
 			) );

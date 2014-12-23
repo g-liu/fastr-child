@@ -11,7 +11,7 @@
 	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php
-			wp_link_pages( array(
+			fastr_link_pages( array(
 				'before' => '<nav class="page-links">' . __( 'Pages:', 'fastr' ),
 				'after'  => '</nav>',
 			) );
