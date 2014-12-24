@@ -1,15 +1,13 @@
 /*
 Theme Name: fastr-child
 
-This stylesheet is included in the theme for printing out onto physical paper.
-There is no need to wrap the entire contents of this file in a @media query.
+This stylesheet is included in the theme for printing out onto physical paper or PDF.
+It should be included after the theme's main CSS.
 
 */
 
 /* Don't display useless material */
 #top-strip,
-.page-links,
-.post-navigation,
 #respond,
 .site-footer {
 	display: none;
@@ -40,15 +38,19 @@ address {
 }
 
 #content {
-	padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+	
+    padding: 0;
+    margin: 0;
 	width: 100%;
+    max-width: 100%;
 }
 
-.entry-meta a,
-.entry-meta a:visited,
-.entry-meta a:focus,
-.entry-meta a:active {
-    color: #555;
+body.single .site-header .container,
+body.page:not(.home) .site-header .container {
+    margin-top: 100px;
 }
 
 .entry-summary:after {

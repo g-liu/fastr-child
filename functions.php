@@ -33,7 +33,7 @@ function additional_styles_and_scripts() {
 	wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' );
 
 	/** print styles */
-	wp_enqueue_style( 'print-styles', get_stylesheet_directory_uri() . '/print.css', array(), false, 'print' );
+	wp_enqueue_style( 'print-styles', get_stylesheet_directory_uri() . '/print.css', array( 'fastr-style' ), false, 'print' );
 
 	/** theme javascript */
 	wp_enqueue_script( 'core-javascript', get_stylesheet_directory_uri() . '/js/fastr-child.js', array( 'jquery-core' ), false, true );

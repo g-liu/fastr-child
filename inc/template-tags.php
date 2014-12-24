@@ -81,6 +81,9 @@ if ( ! function_exists( 'fastr_paginate_links' ) ) :
  * @args mixed[] $args An array of args. Accepts the same params as paginate_links.
  */
 function fastr_paginate_links( $args ) {
+	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
+		return;
+	}
 	?>
 	<nav class="navigation page-links" role="navigation">
 		<h3 class="screen-reader-text">Post navigation</h3>
@@ -101,15 +104,15 @@ if ( ! function_exists( 'fastr_link_pages' ) ) :
  * @args mixed[] $args An array of arguments. Accepts the same parameters as wp_link_pages.
  */
 function fastr_link_pages( $args ) {
-	global $multipage;
-	if ( $multipage !== 0 ) :
+	if ( $GLOBALS[ 'multipage' ] == 0 ) {
+		return;
+	}
 	?>
-		<nav class="navigation page-links" role="navigation">
-			<h3 class="screen-reader-text">Page navigation</h3>
-			<?php wp_link_pages( $args ); ?>
-		</nav><!-- .navigation -->
+	<nav class="navigation page-links" role="navigation">
+		<h3 class="screen-reader-text">Page navigation</h3>
+		<?php wp_link_pages( $args ); ?>
+	</nav><!-- .navigation -->
 	<?php
-	endif;
 }
 endif;
 
