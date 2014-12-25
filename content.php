@@ -12,7 +12,7 @@
 				<div class="meta-author">
 					<span class="fa fa-user"></span>
 					<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
-						<cite role="author"><?php the_author(); ?></cite>
+						<cite><?php the_author(); ?></cite>
 					</a>
 				</div><!-- .meta-author -->
 			</div><!-- .entry-meta -->

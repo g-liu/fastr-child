@@ -44,7 +44,7 @@ switch( $cols ) {
 		<div class="container">
 			<div class="site-info text-center">
 				<?php do_action( 'fastr_credits' ); ?>
-				<?php printf( __( 'Proudly powered by %s', 'fastr' ), '<a href="http://wordpress.org/" rel="generator"  target="_blank">WordPress</a>' ); ?>
+				<?php printf( __( 'Proudly powered by %s', 'fastr' ), '<a href="http://wordpress.org/" target="_blank">WordPress</a>' ); ?>
 			</div><!-- .site-info -->
 		</div>
 	</footer><!-- #colophon -->

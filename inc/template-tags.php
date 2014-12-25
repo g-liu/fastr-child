@@ -124,7 +124,7 @@ if ( ! function_exists( 'fastr_author_info' ) ) :
 function fastr_author_info() {
 ?>
 	<div class="author-info">
-		<h2 class="author-heading">Published by <cite class="author-title" role="author"><?php echo get_the_author_meta( 'display_name' ); ?></cite></h3>
+		<h2 class="author-heading">Published by <cite class="author-title"><?php echo get_the_author_meta( 'display_name' ); ?></cite></h2>
 		<div class="author-avatar">
 			<?php echo get_avatar( get_the_author_meta( 'ID' ), 128, 'mm' ); ?>
 		</div>
@@ -238,7 +238,7 @@ if ( ! function_exists( 'fastr_posted_on' ) ) :
 function fastr_posted_on() {
 	$time_string = '<span class="fa fa-clock-o"></span> <time class="entry-date published" datetime="%1$s">%2$s at %3$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string .= '<time class="updated" datetime="%3$s">%4$s</time>';
+		$time_string .= '<time class="updated" datetime="%4$s">%5$s</time>';
 	}
 
 	$time_string = sprintf( $time_string,

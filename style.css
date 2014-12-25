@@ -1,17 +1,21 @@
 /*
- Theme name:   fastr-child
- Description:  fastr child theme
+ Theme Name:   fastr-child
+ Theme URI:    https://github.com/g-liu/fastr-child
  Author:       Geoffrey Liu
  Author URI:   http://g-liu.com
+ Description:  fastr child theme
  Template:     fastr
  Version:      1.0.0
- Tags:         black, gray, white, one-column, fluid-layout, rtl-language-support, responsive-layout
+ License:      GNU General Public License v3 or later
+ License URI:  http://www.gnu.org/licenses/gpl-3.0.html
+ Tags:         black, gray, white, dark, light, responsive-layout, fluid-layout, one-column, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, flexible-header, post-formats, sticky-post, translation-ready
  Text Domain:  fastr-child
+
+ This theme, like WordPress, is licensed under the GPL.
+ Use it to make something cool, have fun, and share what you've learned with others.
 */
 
 
-/* =Theme customization starts here
--------------------------------------------------------------- */
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,700italic,400italic&subset=latin,latin-ext);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400italic,700italic,700,400&subset=latin,latin-ext);
 
@@ -29,7 +33,7 @@ input,
 select,
 button,
 textarea,
-.page-links,
+.nav-links,
 #top-strip,
 .entry-meta {
 	font-family: 'Roboto', Arial, Helvetica, sans-serif;
@@ -348,8 +352,6 @@ h2.site-description {
 	box-sizing: border-box;
 
 	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;	
 
 	padding: .5em .5em;
@@ -367,7 +369,6 @@ h2.site-description {
 	background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
 }
-
 #top-strip .site-title { float: left; }
 #top-strip nav {
 	float: right;
@@ -825,7 +826,6 @@ form.search-form .input-group input[type=submit] {
 		display: none;
 		position: fixed;
 		top: 0;
-		right: 0;
 		width: 275px;
 		height: 100%;
 		overflow-y: auto;
@@ -862,6 +862,8 @@ form.search-form .input-group input[type=submit] {
 	#top-strip .toggled-off ~ nav {
 		-webkit-animation: slide-in 0.15s;
 		animation: slide-in 0.15s;
+		-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
 	}
 	ul.menu li {
 		display: block;
