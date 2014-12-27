@@ -18,7 +18,6 @@ jQuery( document ).ready( function( $ ) {
 	$( '#menu-toggle, #sidebar-cover' ).click( function() {
 		// TODO: Animation on toggle-off
 		$( '#menu-toggle' ).toggleClass( 'toggled-on' );
-
 	} );
 
 	$( '#top-strip nav li' ).click( function( evt ) {
@@ -30,6 +29,22 @@ jQuery( document ).ready( function( $ ) {
 
 		// so that upper-level LI's don't receive the event
 		evt.stopPropagation();
+	} );
+
+	$( '.search-form input[type=submit]' ).click( function( evt ) {
+		var $search = $( this ).parents( '.search-form' ).find( 'input[type=search]' );
+		if ( $search.hasClass( 'collapsed' ) ) {
+			$search.removeClass( 'collapsed' ).focus();
+		}
+		if ( ! $search.val() ) {
+			evt.preventDefault(); // no search if input is blank
+		}
+	} );
+
+	$( '#top-strip .search-form input[type=search]' ).blur( function( evt ) {
+		if ( ! $( this ).val() ) {
+			$( this ).addClass( 'collapsed' );
+		}
 	} );
 
 	$( document ).keydown( function( evt ) {

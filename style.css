@@ -359,7 +359,7 @@ h2.site-description {
 	color: #eee;
 	text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 	zoom: 1;
-	z-index: 1000;
+	z-index: 100000;
 
 	background: rgba(0,0,0,.30); /* fallback */
 	background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
@@ -406,6 +406,11 @@ h2.site-description {
 	opacity: 0.65;
 	z-index: 1000;
 }
+#top-strip form.search-form .input-group input[type=search].collapsed {
+	max-width: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
 
 ul.menu,
 ul.menu ul {
@@ -428,8 +433,7 @@ ul.menu li.menu-item-has-children > a:after {
 	padding-left: 0.15em;
 	opacity: 0.9;
 }
-ul.menu > li a,
-ul.menu > li span {
+ul.menu > li a {
 	color: #eee;
 	text-decoration: none;
 	display: block;
@@ -479,8 +483,7 @@ ul.menu ul li a {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-ul.menu .search-form .input-group,
-ul.menu .search-form .search-submit {
+ul.menu .search-form .input-group {
 	padding: 0;
 }
 
@@ -491,12 +494,14 @@ ul.menu .search-form .search-submit {
 
 .container {
 	width: auto;
-	max-width: 960px;
+	max-width: 920px;
 }
 .container.wide { max-width: 1200px; }
 .container.narrow { max-width: 700px; }
 
-.hentry { margin-bottom: 1.5em; }
+.hentry {
+	margin: 0 auto 1.5em;
+}
 .hentry p:last-child { margin-bottom: 0; }
 
 .site-main .hentry:last-of-type .entry-summary {
@@ -762,10 +767,14 @@ form.search-form .input-group {
 	display: inline-block;
 }
 form.search-form .input-group input[type=search] {
+	max-width: 150px;
 	border: none;
 	border-radius: 0;
 	padding-top: .2em;
 	padding-bottom: .2em;
+
+	-webkit-transition: max-width 0.2s ease-out, padding 0.2s ease-out;
+	transition: max-width 0.2s ease-out, padding 0.2s ease-out;
 }
 form.search-form .input-group input[type=submit] {
 	font-family: FontAwesome;
@@ -909,6 +918,11 @@ form.search-form .input-group input[type=submit] {
 	}
 	ul.menu ul li.menu-item-has-children > a:after {
 		content: '\25BE';
+	}
+
+	#top-strip form.search-form .input-group input[type=search].collapsed {
+		max-width: inherit;
+		padding: inherit;
 	}
 
 	.site-header .container {
