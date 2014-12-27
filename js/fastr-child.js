@@ -15,10 +15,10 @@ jQuery( document ).ready( function( $ ) {
 		evt.preventDefault();
 	} );
 
-	var mobileVisible = $( '#menu-toggle' );
 	$( '#menu-toggle, #sidebar-cover' ).click( function() {
 		// TODO: Animation on toggle-off
 		$( '#menu-toggle' ).toggleClass( 'toggled-on' );
+
 	} );
 
 	$( '#top-strip nav li' ).click( function( evt ) {
@@ -39,7 +39,34 @@ jQuery( document ).ready( function( $ ) {
 		}
 	} );
 
+	
+	var lastScrollTop = 0;
+	var tolerance = 10;
+	$( window ).scroll( function() {
+		var st = $( this ).scrollTop();
+		if ( Math.abs( st - lastScrollTop ) <= tolerance ) {
+			return;
+		}
+
+		// If we are close to the top then snap the header to the top
+		if ( st < tolerance && ( $( '#top-strip' ).hasClass( 'nav-down' ) || $( '#top-strip' ).hasClass( 'nav-up' ) ) ) {
+			$( '#top-strip' ).removeClass( 'nav-down nav-up' );
+		}
+		// If they scrolled down and are past the navbar, add class .nav-up.
+		// This is necessary so you never see what is "behind" the navbar.
+		else if ( st > lastScrollTop && st > $( '#top-strip' ).height() ) {
+			// Scroll Down
+			$( '#top-strip' ).removeClass( 'nav-down' ).addClass( 'nav-up' );
+		}
+		else if ( st + $( this ).height() < $( document ).height() ) {
+			// Scroll up
+			$( '#top-strip' ).removeClass( 'nav-up' ).addClass( 'nav-down' );
+		}
+		lastScrollTop = st;
+	} );
+
 	/*
+	// Parallax scrolling
 	$( window ).scroll( function( evt ) {
 		if ( ! $( 'body' ).hasClass( 'home' ) && ( $( 'body' ).hasClass( 'single' ) || $( 'body' ).hasClass( 'page' ) ) ) {
 			var scrollPosition = $( this ).scrollTop();

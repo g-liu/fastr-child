@@ -352,8 +352,8 @@ h2.site-description {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 
-	position: absolute;
-	width: 100%;	
+	position: fixed;
+	width: 100%;
 
 	padding: .5em .5em;
 	color: #eee;
@@ -369,6 +369,9 @@ h2.site-description {
 	background: -o-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
 	background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+
+	-webkit-transition: top 200ms ease-out, background 200ms ease-out;
+	transition: top 200ms ease-out, background 200ms ease-out;
 }
 #top-strip .site-title { float: left; }
 #top-strip nav {
@@ -376,6 +379,16 @@ h2.site-description {
 	font-size: 90%;
 }
 #top-strip a { color: #eee; }
+#top-strip.nav-down,
+#top-strip.nav-up {
+	background: rgba(0, 0, 0, 0.8);
+}
+#top-strip.nav-down {
+	top: 0;
+}
+#top-strip.nav-up {
+	top: -100px;
+}
 
 /** Site navigation menu */
 #menu-toggle {
