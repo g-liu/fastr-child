@@ -185,6 +185,7 @@
 				<?php endif; ?>
 
 			</div><!-- .container.narrow -->
+			
 		</header><!-- #masthead -->
 
 		<div id="content" class="site-content container">

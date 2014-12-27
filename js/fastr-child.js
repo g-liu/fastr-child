@@ -22,11 +22,10 @@ jQuery( document ).ready( function( $ ) {
 	} );
 
 	$( '#top-strip nav li' ).click( function( evt ) {
-		$( this ).children( 'ul' ).toggle();
-		// close other "open" children
-		console.log ( $( this ).siblings( 'li' ) );
+		$( this ).children( 'ul' ).toggleClass( 'shown-mobile' );
+
 		$( this ).siblings( 'li' ).each( function() {
-			$( this ).children( 'ul' ).hide();
+			$( this ).children( 'ul' ).removeClass( 'shown-mobile' );
 		} );
 
 		// so that upper-level LI's don't receive the event
