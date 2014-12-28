@@ -38,6 +38,13 @@ function fastr_child_customize_register( $wp_customize ) {
 			)
 		)
 	);
+
+	if ( ! get_theme_mod( 'header_color' ) ) {
+		set_theme_mod( 'header_color', '#333333' );
+	}
+	if ( ! get_theme_mod( 'tagline_textcolor' ) ) {
+		set_theme_mod( 'tagline_textcolor', '#EEEEEE' );
+	}
 }
 add_action( 'customize_register', 'fastr_child_customize_register' );
 
