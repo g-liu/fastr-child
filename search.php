@@ -22,7 +22,7 @@ get_header(); ?>
 				fastr_paginate_links( array(
 					'format' => 'page/%#%',
 					'add_args' => array(
-						's' => get_search_query(),
+						's' => urlencode( get_search_query() ),
 					),
 				) );
 			?>
