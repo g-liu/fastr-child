@@ -946,3 +946,52 @@ form.search-form .input-group input[type=submit] {
 @media all and (max-width: 599px) {
 	.col-1-4 { width: 100%; }
 }
+
+
+
+body.home #masthead {
+	-webkit-filter: hue-rotate(0deg);
+	filter: hue-rotate(0deg);
+
+	-webkit-animation: color-change 60s linear infinite;
+	-moz-animation: color-change 60s linear infinite;
+	-ms-animation: color-change 60s linear infinite;
+	-o-animation: color-change 60s linear infinite;
+	animation: color-change 60s linear infinite;
+}
+
+@-webkit-keyframes color-change {
+	to {
+		-webkit-filter: hue-rotate(360deg);
+		filter: hue-rotate(360deg);
+	}
+}
+
+@-moz-keyframes color-change {
+	to {
+		-moz-filter: hue-rotate(360deg);
+		filter: hue-rotate(360deg);
+	}
+}
+
+@-ms-keyframes color-change {
+	to {
+		-ms-filter: hue-rotate(360deg);
+		filter: hue-rotate(360deg);
+	}
+}
+
+@-o-keyframes color-change {
+	to {
+		-o-filter: hue-rotate(360deg);
+		filter: hue-rotate(360deg);
+	}
+}
+
+
+@keyframes color-change {
+	to {
+		filter: hue-rotate(360deg);
+	}
+}
+

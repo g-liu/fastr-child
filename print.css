@@ -57,3 +57,8 @@ body.page:not(.home) .site-header .container {
     content: '';
     display: none;
 }
+
+body.home #masthead {
+    -webkit-animation: none;
+    animation: none;
+}
