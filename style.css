@@ -565,7 +565,7 @@ ul.menu .search-form .input-group {
 	margin: 0 auto;
 }
 
-.wp-caption .wp-caption-text { font-size: 80%; }
+.wp-caption-text { font-size: 80%; }
 
 .navigation {
 	border-top: #EBF2F6 1px solid;
