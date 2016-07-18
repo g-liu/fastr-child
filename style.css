@@ -1000,6 +1000,10 @@ body.home #masthead {
 
 @keyframes color-change {
 	to {
+		-webkit-filter: hue-rotate(360deg);
+		-moz-filter: hue-rotate(360deg);
+		-ms-filter: hue-rotate(360deg);
+		-o-filter: hue-rotate(360deg);
 		filter: hue-rotate(360deg);
 	}
 }
