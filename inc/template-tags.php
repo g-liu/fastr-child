@@ -132,8 +132,8 @@ function fastr_author_info() {
 		<div class="author-description">
 			<p class="author-bio">
 				<?php echo get_the_author_meta( 'description' ); ?>
-				<a class="author-link" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" rel="author">View all posts by <?php echo get_the_author_meta( 'display_name' ); ?> &rarr;</a>
 			</p>
+			<a class="author-link" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" rel="author">View all posts by <?php echo get_the_author_meta( 'display_name' ); ?> &rarr;</a>
 		</div>
 	</div><!-- .author-info -->
 <?php

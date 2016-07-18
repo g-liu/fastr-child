@@ -644,6 +644,10 @@ ul.menu .search-form .input-group {
 	line-height: 1.4em;
 }
 
+p.author-bio {
+	margin-bottom: 1em;
+}
+
 .comments-area {
 	position: relative;
 	border-top: #EBF2F6 1px solid;
