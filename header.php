@@ -61,7 +61,7 @@
 
 		<header id="masthead" class="site-header" style="background-color:<?php echo $header_bg_color; ?>;<?php echo $url ? 'background-image:url(\'' . $url . '\');' : '' ?>" role="banner">
 
-			<div class="container narrow">
+			<div class="container">
 
 				<?php if ( is_home() ) : ?>
 					<div class="site-branding text-center">
